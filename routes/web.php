@@ -27,3 +27,8 @@ Route::get('profile',function(){
 
 
 Route::resource('pegawai','PegawaiController');
+Route::get('data-pegawai','PegawaiController@fetch')->name('fetch-pegawai');
+Route::get('create-pdf/{id}','PegawaiController@createPDF')->name('print-pdf');
+
+Route::resource('item','ItemController');
+Route::get('data-item','ItemController@fetch')->name('fetch-item');

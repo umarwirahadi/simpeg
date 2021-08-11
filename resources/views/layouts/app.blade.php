@@ -3,24 +3,31 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="{{asset('images/cimahi.png')}}">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/fontawesome-all.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('vendor/sweetalert2/dist/sweetalert2.min.css')}}">
+    <link rel="stylesheet" href="{{asset('vendor/DataTables/datatables.min.css')}}">
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('vendor/pnotify2/dist/PNotifyBrightTheme.css')}}">
+
+
 
 </head>
-<body>
+<body data-site="{{url('/')}}">
     <div id="app">
         @auth
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     SIMAPEG
@@ -32,7 +39,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Data Pegawai</a>
+                            <a class="nav-link" href="{{route('pegawai.index')}}">Data Pegawai</a>
                           </li>
                           <!-- Dropdown -->
                           <li class="nav-item dropdown">
@@ -42,7 +49,7 @@
                             <div class="dropdown-menu">
                               <a class="dropdown-item" href="#">Berkas</a>
                               <a class="dropdown-item" href="#">Kehadiran</a>
-                              <a class="dropdown-item" href="#">Item</a>
+                              <a class="dropdown-item" href="{{route('item.index')}}">Item</a>
                             </div>
                           </li>
                           <li class="nav-item dropdown">
@@ -111,12 +118,36 @@
         </main>
     </div>
 
+
     <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
+
     <script src="{{asset('js/jquery.min.js')}}"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
-    <script src="{{asset('js/bootstrap.min.js')}}"></script> <!-- Bootstrap framework -->
+
+    {{-- <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script> <!-- Bootstrap framework -->
     <script src="{{asset('js/jquery.easing.min.js')}}"></script> <!-- jQuery Easing for smooth scrolling between anchors -->
     <script src="{{asset('js/jquery.magnific-popup.js')}}"></script> <!-- Magnific Popup for lightboxes -->
-    <script src="{{asset('js/swiper.min.js')}}"></script> <!-- Swiper for image and text sliders -->
-    {{-- <script src="{{asset('js/scripts.js')}}"></script> <!-- Custom scripts --> --}}
+    <script src="{{asset('js/swiper.min.js')}}"></script> <!-- Swiper for image and text sliders --> --}}
+
+    <script src="{{asset('vendor/pnotify2/dist/iife/PNotify.js')}}"></script>
+    <script src="{{asset('vendor/pnotify2/dist/iife/PNotifyButtons.js')}}"></script>
+    <script src="{{asset('vendor/sweetalert2/dist/sweetalert2.min.js')}}"></script>
+    <script src="{{asset('vendor/DataTables/datatables.min.js')}}"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js" ></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js" ></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js" ></script>
+
+
+
+    <script>
+        PNotify.defaults.styling = 'bootstrap4';
+    </script>
+    <script src="{{asset('js/src.js')}}"></script> <!-- Custom scripts -->
 </body>
 </html>
